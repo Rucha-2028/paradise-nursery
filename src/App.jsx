@@ -3,6 +3,7 @@ import React from "react";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import AboutUs from "./components/AboutUs";
 import ProductList from "./components/ProductList";
+import CartItem from "./components/CartItem";
 import "./App.css";
 
 // Landing Page
@@ -35,24 +36,14 @@ function Home() {
   );
 }
 
-// Temporary cart page; we will implement it in Question 7.
-function CartPlaceholder() {
-  return (
-    <div style={{ padding: "40px", textAlign: "center" }}>
-      <h1>Shopping Cart</h1>
-      <p>Your shopping cart will be displayed here.</p>
-      <Link to="/plants">Continue Shopping</Link>
-    </div>
-  );
-}
-
+// Main Application
 function App() {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/plants" element={<ProductList />} />
-        <Route path="/cart" element={<CartPlaceholder />} />
+        <Route path="/cart" element={<CartItem />} />
       </Routes>
     </BrowserRouter>
   );
