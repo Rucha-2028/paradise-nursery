@@ -1,122 +1,72 @@
-import { useState } from 'react'
-import heroImg from './assets/hero.png'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import './App.css'
 
-function App() {
-  const [count, setCount] = useState(0)
+import React from "react";
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import AboutUs from "./components/AboutUs";
+import "./App.css";
 
+// Landing Page
+function Home() {
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
+    <div className="landing-page">
+      <div className="landing-content">
+        <h1>Paradise Nursery</h1>
 
-      <div className="ticks"></div>
+        <h2>Bring Nature Home</h2>
 
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
+        <p>
+          Welcome to Paradise Nursery, your destination for beautiful
+          indoor plants and greenery. We believe that plants bring life,
+          freshness, and positivity into every space. Explore our
+          collection of carefully selected houseplants and find the
+          perfect green companion for your home. Whether you are a
+          beginner or an experienced plant lover, we are here to make
+          your plant shopping experience simple and enjoyable.
+        </p>
 
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
-  )
+        <AboutUs />
+
+        <Link to="/plants">
+          <button className="get-started-btn">
+            Get Started
+          </button>
+        </Link>
+      </div>
+    </div>
+  );
 }
 
-export default App
+// Temporary pages; we will implement these in later questions.
+function PlantsPlaceholder() {
+  return (
+    <div style={{ padding: "40px", textAlign: "center" }}>
+      <h1>Our Houseplants</h1>
+      <p>Our plant collection will be available here.</p>
+      <Link to="/">Back to Home</Link>
+    </div>
+  );
+}
+
+function CartPlaceholder() {
+  return (
+    <div style={{ padding: "40px", textAlign: "center" }}>
+      <h1>Shopping Cart</h1>
+      <p>Your shopping cart will be displayed here.</p>
+      <Link to="/plants">Continue Shopping</Link>
+    </div>
+  );
+}
+
+// Main Application
+function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/plants" element={<PlantsPlaceholder />} />
+        <Route path="/cart" element={<CartPlaceholder />} />
+      </Routes>
+    </BrowserRouter>
+  );
+}
+
+export default App;

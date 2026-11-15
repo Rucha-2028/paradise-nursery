@@ -14,13 +14,13 @@
   position: relative;
 }
 
-/* Dark overlay to improve text visibility */
+/* Light overlay */
 
 .landing-page::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.35);
+  background: rgba(255, 255, 255, 0.35);
 }
 
 /* Landing page content */
@@ -31,28 +31,54 @@
   max-width: 750px;
   padding: 40px;
   text-align: center;
-  color: white;
+  color: #183b27;
 }
 
 .landing-content h1 {
   font-size: 52px;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
   font-weight: 700;
+  color: #17452b;
+}
+
+.landing-content h2 {
+  font-size: 28px;
+  color: #315d3d;
+  margin-bottom: 20px;
 }
 
 .landing-content p {
   font-size: 18px;
   line-height: 1.7;
-  margin-bottom: 30px;
+  margin-bottom: 25px;
+  color: #263b2d;
 }
+
+/* About section */
+
+.about-section {
+  color: #263b2d;
+  margin: 20px auto;
+}
+
+.about-section h2 {
+  color: #17452b;
+}
+
+.about-section p {
+  color: #263b2d;
+}
+
+/* Get Started button */
 
 .get-started-btn {
   padding: 14px 32px;
   background-color: #285c35;
-  color: white;
+  color: #ffffff;
   border: none;
   border-radius: 5px;
   font-size: 17px;
+  font-weight: 600;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
@@ -70,6 +96,10 @@
 
   .landing-content h1 {
     font-size: 36px;
+  }
+
+  .landing-content h2 {
+    font-size: 23px;
   }
 
   .landing-content p {
