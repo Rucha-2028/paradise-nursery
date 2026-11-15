@@ -7,7 +7,7 @@ import { FaShoppingCart } from "react-icons/fa";
 function Navbar() {
   const cartItems = useSelector((state) => state.cart.items);
 
-  // Calculate the total quantity of all products in the cart
+  // Calculate total quantity of all products
   const totalItems = cartItems.reduce(
     (total, item) => total + item.quantity,
     0
@@ -19,16 +19,23 @@ function Navbar() {
         Paradise Nursery
       </Link>
 
-      <div className="navbar-links">
-        <Link to="/">Home</Link>
-        <Link to="/plants">Plants</Link>
+      <ul className="navbar-links">
+        <li>
+          <Link to="/">Home</Link>
+        </li>
 
-        <Link to="/cart" className="cart-link">
-          <FaShoppingCart />
-          <span>Cart</span>
-          <span className="cart-count">{totalItems}</span>
-        </Link>
-      </div>
+        <li>
+          <Link to="/plants">Plants</Link>
+        </li>
+
+        <li>
+          <Link to="/cart" className="cart-link">
+            <FaShoppingCart size={20} />
+            <span>Cart</span>
+            <span className="cart-count">{totalItems}</span>
+          </Link>
+        </li>
+      </ul>
     </nav>
   );
 }

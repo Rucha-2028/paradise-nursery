@@ -1,10 +1,10 @@
 
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import { FaShoppingCart } from "react-icons/fa";
 import { addItem } from "../redux/CartSlice";
-import Navbar from "./Navbar";
 import "./ProductList.css";
-
 
 const plantCategories = [
   {
@@ -134,19 +134,54 @@ const plantCategories = [
 
 function ProductList() {
   const dispatch = useDispatch();
+
+  // Read cart items from the Redux store
   const cartItems = useSelector((state) => state.cart.items);
 
+  // Calculate the total quantity of all items in the cart
+  const totalItems = cartItems.reduce(
+    (total, item) => total + item.quantity,
+    0
+  );
+
+  // Check whether a particular plant is already in the cart
   const isInCart = (plantId) =>
     cartItems.some((item) => item.id === plantId);
 
+  // Add the selected plant to the Redux cart
   const handleAddToCart = (plant) => {
     dispatch(addItem(plant));
   };
 
   return (
     <div className="product-page">
-      <Navbar />
 
+      {/* Navigation Bar */}
+      <nav className="navbar">
+        <Link to="/" className="navbar-brand">
+          Paradise Nursery
+        </Link>
+
+        <ul className="navbar-links">
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+
+          <li>
+            <Link to="/plants">Plants</Link>
+          </li>
+
+          <li>
+            <Link to="/cart" className="cart-link">
+              <FaShoppingCart size={20} />
+              <span>Cart</span>
+              <span className="cart-count">{totalItems}</span>
+            </Link>
+          </li>
+        </ul>
+      </nav>
+
+      {/* Product Listing Heading */}
       <header className="product-header">
         <h1>Our Houseplant Collection</h1>
         <p>
@@ -155,9 +190,13 @@ function ProductList() {
         </p>
       </header>
 
+      {/* Plant Categories and Product Cards */}
       <main className="product-container">
         {plantCategories.map((category) => (
-          <section className="plant-category" key={category.category}>
+          <section
+            className="plant-category"
+            key={category.category}
+          >
             <h2>{category.category}</h2>
 
             <div className="plant-grid">
@@ -171,6 +210,7 @@ function ProductList() {
 
                   <div className="plant-details">
                     <h3>{plant.name}</h3>
+
                     <p className="plant-price">
                       ₹{plant.price}
                     </p>
