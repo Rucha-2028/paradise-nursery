@@ -2,6 +2,7 @@
 import React from "react";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import AboutUs from "./components/AboutUs";
+import ProductList from "./components/ProductList";
 import "./App.css";
 
 // Landing Page
@@ -10,7 +11,6 @@ function Home() {
     <div className="landing-page">
       <div className="landing-content">
         <h1>Paradise Nursery</h1>
-
         <h2>Bring Nature Home</h2>
 
         <p>
@@ -35,17 +35,7 @@ function Home() {
   );
 }
 
-// Temporary pages; we will implement these in later questions.
-function PlantsPlaceholder() {
-  return (
-    <div style={{ padding: "40px", textAlign: "center" }}>
-      <h1>Our Houseplants</h1>
-      <p>Our plant collection will be available here.</p>
-      <Link to="/">Back to Home</Link>
-    </div>
-  );
-}
-
+// Temporary cart page; we will implement it in Question 7.
 function CartPlaceholder() {
   return (
     <div style={{ padding: "40px", textAlign: "center" }}>
@@ -56,13 +46,12 @@ function CartPlaceholder() {
   );
 }
 
-// Main Application
 function App() {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/plants" element={<PlantsPlaceholder />} />
+        <Route path="/plants" element={<ProductList />} />
         <Route path="/cart" element={<CartPlaceholder />} />
       </Routes>
     </BrowserRouter>
